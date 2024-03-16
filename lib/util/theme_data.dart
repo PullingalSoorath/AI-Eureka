@@ -1,25 +1,38 @@
 import 'package:flutter/material.dart';
 
-final ThemeData myTheme = ThemeData(
-  colorScheme: const ColorScheme(
-    primaryContainer: Color.fromARGB(255, 219, 228, 251),
-    secondaryContainer: Color.fromARGB(255, 148, 173, 248),
+// ThemeMode themeMode = ThemeMode.system;
 
-    primary: Colors.blue,
-    secondary: Colors.green, // Secondary color
-    surface: Colors
-        .white, // Surface color (background color of components like cards)
-    background: Colors.white, // Background color
-    error: Colors.red, // Error color
-    onPrimary: Colors.white, // Color for elements on top of the primary color
-    onSecondary:
-        Colors.white, // Color for elements on top of the secondary color
-    onSurface: Colors.black, // Color for elements on top of the surface color
-    onBackground:
-        Colors.black, // Color for elements on top of the background color
-    onError: Colors.white, // Color for elements on top of the error color
-    brightness: Brightness.light, // Brightness (light or dark)
-    
-    
+// ThemeData get themedata {
+//   switch (themeMode) {
+//     case ThemeMode.system:
+//       return lightMode;
+//     case ThemeMode.light:
+//       return lightMode;
+//     case ThemeMode.dark:
+//       return darkMode;
+//   }
+// }
+
+final lightMode = ThemeData(
+  appBarTheme: const AppBarTheme(color: Colors.white),
+  brightness: Brightness.light,
+  colorScheme: const ColorScheme.light(
+    background: Color.fromARGB(255, 218, 234, 247),
+    primary: Colors.black,
+    secondary: Colors.white,
+    primaryContainer: Colors.blue,
+    onBackground: Color.fromARGB(255, 252, 252, 252),
+  ),
+);
+
+final darkMode = ThemeData(
+  appBarTheme: const AppBarTheme(color: Colors.transparent),
+  brightness: Brightness.dark,
+  colorScheme: const ColorScheme.dark(
+    background: Color.fromARGB(255, 0, 37, 68),
+    primary: Colors.white,
+    secondary: Colors.black,
+    primaryContainer: Color.fromARGB(255, 42, 79, 110),
+    onBackground: Color.fromARGB(255, 24, 80, 125),
   ),
 );

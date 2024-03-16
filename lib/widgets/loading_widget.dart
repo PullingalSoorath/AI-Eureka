@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ThreeDotLoading extends StatelessWidget {
+  const ThreeDotLoading({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Dot(),
@@ -17,7 +19,10 @@ class ThreeDotLoading extends StatelessWidget {
 }
 
 class Dot extends StatefulWidget {
+  const Dot({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _DotState createState() => _DotState();
 }
 
@@ -29,7 +34,7 @@ class _DotState extends State<Dot> with SingleTickerProviderStateMixin {
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 1000),
+      duration: const Duration(milliseconds: 1000),
     )..repeat();
   }
 
@@ -45,13 +50,13 @@ class _DotState extends State<Dot> with SingleTickerProviderStateMixin {
       opacity: Tween<double>(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(
           parent: _animationController,
-          curve: Interval(0.0, 0.7, curve: Curves.easeInOut),
+          curve: const Interval(0.0, 0.7, curve: Curves.easeInOut),
         ),
       ),
       child: Container(
         width: 10,
         height: 10,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.blue,
           shape: BoxShape.circle,
         ),

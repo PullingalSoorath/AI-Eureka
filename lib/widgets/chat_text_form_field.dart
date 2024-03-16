@@ -5,6 +5,8 @@ class ChatTextFormField extends StatelessWidget {
   final TextEditingController? controller;
   final bool isReadOnly;
   final void Function(String)? onFieldSubmitted;
+  final void Function(String)? onchanged;
+  final String? errorText;
 
   const ChatTextFormField({
     super.key,
@@ -12,11 +14,13 @@ class ChatTextFormField extends StatelessWidget {
     this.controller,
     this.isReadOnly = false,
     required this.onFieldSubmitted,
+    this.onchanged, this.errorText,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: onchanged,
       autofocus: true,
       autocorrect: false,
       focusNode: focusNode,

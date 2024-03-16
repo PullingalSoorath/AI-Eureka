@@ -1,4 +1,4 @@
-import 'package:eureka/screen/dashboard_screen.dart';
+import 'package:eureka/presentation/screen/auth_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -7,19 +7,35 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const DashboardScreen(),
-              ),
-            );
-          },
-          child: const Text("Go to dashboard"),
-        ),
-      ),
-    );
+        backgroundColor: Theme.of(context).colorScheme.background,
+        body: Column(
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height * 0.9,
+              color: Theme.of(context).colorScheme.background,
+            ),
+            Divider(
+              color: Theme.of(context).colorScheme.primary,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const AuthScreen(),
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    'skip to continue ',
+                  ),
+                ),
+              ],
+            )
+          ],
+        ));
   }
 }

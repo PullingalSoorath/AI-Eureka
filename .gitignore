@@ -44,6 +44,6 @@ app.*.map.json
 
 
 # ignoring const file (Api);
-lib\util\api_key.dart
+lib/util/api_key.dart
 
 

@@ -38,6 +38,10 @@ dependencies:
   
   # https://pub.dev/packages/firebase_auth
   firebase_auth: ^4.17.8
+  # https://pub.dev/packages/firebase_core
+  firebase_core: ^2.27.1
+  # https://pub.dev/packages/google_sign_in
+  google_sign_in: ^6.2.1
 
 dev_dependencies:
   flutter_test:

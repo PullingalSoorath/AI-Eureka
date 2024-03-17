@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "393036563512",
+    "project_id": "autobotai-33efc",
+    "storage_bucket": "autobotai-33efc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:393036563512:android:e06ef68014b77ca5be52cd",
+        "android_client_info": {
+          "package_name": "com.example.eureka"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "393036563512-j9ftpq1c1n4p1vfkfji1gcd4tkmk8feq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_USA6JABobzhvB_SdOAEP70TYyToEAME"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "393036563512-ald0g62p23ukkt7nv4lpafad5f6rcrvu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "393036563512-05st125gar1gr3gug712j3call31lt4k.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.eureka"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

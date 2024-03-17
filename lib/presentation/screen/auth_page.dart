@@ -1,8 +1,11 @@
-import 'package:eureka/widgets/auth_text_field.dart';
-import 'package:eureka/widgets/auth_button.dart';
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:eureka/services/auth_service.dart';
 import 'package:eureka/widgets/sign_signup_text_btn.dart';
-import 'package:eureka/util/app_const.dart';
 import 'package:flutter/material.dart';
+import '../../widgets/google_image_button.dart';
+import 'sign_in_auth.dart';
+import 'sign_up_auth.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
@@ -41,24 +44,8 @@ class _AuthScreenState extends State<AuthScreen> {
               ),
               child: Text('Or continue with'),
             ),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Colors.white,
-                ),
-                height: 50,
-                width: 50,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Image.asset(
-                    'assets/images/google.png',
-                    height: 24.0,
-                    width: 24,
-                  ),
-                ),
-              ),
+            GoogleImageButton(
+              onTap: () => AuthServices().signWithGoogle(),
             ),
             AccountAuthText(
               text1: "If you don't have an account? ",
@@ -72,109 +59,6 @@ class _AuthScreenState extends State<AuthScreen> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class SignUpAuth extends StatelessWidget {
-  const SignUpAuth({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const SizedBox(
-          width: double.infinity,
-        ),
-        const Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Text(
-            'Welcome to $appName',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
-            ),
-            textAlign: TextAlign.center,
-          ),
-        ),
-        const AuthTextField(
-          hintText: "User ID",
-        ),
-        const AuthTextField(
-          hintText: "Password",
-        ),
-        const AuthTextField(
-          hintText: "Confirm Password",
-        ),
-        TextButton(
-          onPressed: () {
-            //forget password
-          },
-          child: const Text(
-            'Forget Password?',
-            style: TextStyle(
-              color: Colors.blue,
-            ),
-          ),
-        ),
-        AuthButton(
-          buttonName: "Sign Up",
-          onTap: () {},
-        ),
-      ],
-    );
-  }
-}
-
-class SignInAuth extends StatelessWidget {
-  const SignInAuth({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const SizedBox(
-          width: double.infinity,
-        ),
-        const Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Text(
-            'Welcome back to $appName',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
-            ),
-            textAlign: TextAlign.center,
-          ),
-        ),
-        const AuthTextField(
-          hintText: "User ID",
-        ),
-        const AuthTextField(
-          hintText: "Password",
-        ),
-        TextButton(
-          onPressed: () {
-            //forget password
-          },
-          child: const Text(
-            'Forget Password?',
-            style: TextStyle(
-              color: Colors.blue,
-            ),
-          ),
-        ),
-        AuthButton(
-          buttonName: "Sign In",
-          onTap: () {},
-        ),
-      ],
     );
   }
 }

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:eureka/presentation/screen/chat_screen.dart';
 import 'package:eureka/util/app_const.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -43,6 +44,18 @@ class DashboardScreen extends StatelessWidget {
         return shouldPop ?? false; // Default to not popping
       },
       child: Scaffold(
+        appBar: AppBar(
+          actions: [
+            IconButton(
+              onPressed: () {
+                FirebaseAuth.instance.signOut();
+              },
+              icon: const Icon(
+                Icons.logout,
+              ),
+            )
+          ],
+        ),
         backgroundColor: Theme.of(context).colorScheme.background,
         // appBar: AppBar(
         //   centerTitle: true,

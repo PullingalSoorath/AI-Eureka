@@ -1,14 +1,25 @@
 import 'package:flutter/material.dart';
 
-class AuthTextField extends StatelessWidget {
-  const AuthTextField({
+// ignore: must_be_immutable
+class AuthTextField extends StatefulWidget {
+  AuthTextField({
     super.key,
     required this.hintText,
     this.controller,
+    required this.obscureText,
+    required this.enableObscureText,
   });
   final String hintText;
   final TextEditingController? controller;
 
+  late bool obscureText;
+  late bool enableObscureText;
+
+  @override
+  State<AuthTextField> createState() => _AuthTextFieldState();
+}
+
+class _AuthTextFieldState extends State<AuthTextField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,11 +30,27 @@ class AuthTextField extends StatelessWidget {
       child: SizedBox(
         height: 60,
         child: TextFormField(
-          controller: controller,
+          controller: widget.controller,
+          obscureText: widget.obscureText,
           decoration: InputDecoration(
+            suffixIcon: Visibility(
+              visible: widget.enableObscureText,
+              child: IconButton(
+                onPressed: () {
+                  setState(() {
+                    widget.obscureText = !widget.obscureText;
+                  });
+                },
+                icon: Icon(
+                  widget.obscureText
+                      ? Icons.visibility_off
+                      : Icons.visibility,
+                ),
+              ),
+            ),
             fillColor: Theme.of(context).colorScheme.onBackground,
             filled: true,
-            hintText: hintText,
+            hintText: widget.hintText,
             border: const OutlineInputBorder(
               borderSide: BorderSide.none,
               borderRadius: BorderRadius.all(

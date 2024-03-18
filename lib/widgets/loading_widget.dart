@@ -56,8 +56,10 @@ class _DotState extends State<Dot> with SingleTickerProviderStateMixin {
       child: Container(
         width: 10,
         height: 10,
-        decoration: const BoxDecoration(
-          color: Colors.blue,
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.brightness == Brightness.light
+              ? Colors.blue
+              : Colors.white,
           shape: BoxShape.circle,
         ),
       ),

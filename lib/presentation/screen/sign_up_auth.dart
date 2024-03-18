@@ -3,6 +3,7 @@
 import 'package:eureka/util/app_const.dart';
 import 'package:eureka/widgets/auth_button.dart';
 import 'package:eureka/widgets/auth_text_field.dart';
+import 'package:eureka/widgets/loading_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -39,7 +40,7 @@ class _SignUpAuthState extends State<SignUpAuth> {
         context: context,
         builder: (context) {
           return const Center(
-            child: CircularProgressIndicator(),
+            child: ThreeDotLoading(),
           );
         },
       );

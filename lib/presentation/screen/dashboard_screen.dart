@@ -5,8 +5,32 @@ import 'package:eureka/util/app_const.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class DashboardScreen extends StatelessWidget {
+class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
+
+  @override
+  State<DashboardScreen> createState() => _DashboardScreenState();
+}
+
+class _DashboardScreenState extends State<DashboardScreen> {
+  String _userName = '';
+  String _emailId = '';
+
+  @override
+  void initState() {
+    super.initState();
+    _getUserInfo();
+  }
+
+  Future<void> _getUserInfo() async {
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      setState(() {
+        _userName = user.displayName ?? '';
+        _emailId = user.email ?? '';
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,22 +70,61 @@ class DashboardScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.background,
-          actions: [
-            IconButton(
-              onPressed: () {
-                FirebaseAuth.instance.signOut();
-              },
-              icon: const Icon(
-                Icons.logout,
+        ),
+        endDrawer: Drawer(
+          backgroundColor: Theme.of(context).colorScheme.background,
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              UserAccountsDrawerHeader(
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.background,
+                ),
+                accountName: Text(
+                  _userName,
+                ),
+                accountEmail: Text(
+                  _emailId,
+                ),
+                currentAccountPicture: CircleAvatar(
+                  backgroundImage: AssetImage(
+                    FirebaseAuth.instance.currentUser!.photoURL == null
+                        ? 'assets/images/profile_bg.png'
+                        : FirebaseAuth.instance.currentUser!.photoURL!,
+                  ),
+                ),
               ),
-            )
-          ],
+              // ListTile(
+              //   title: Text('Profile'),
+              //   onTap: () {
+              //     // Navigate to profile screen
+              //     Navigator.pop(context); // Close the drawer
+              //     // Add your navigation logic here
+              //   },
+              // ),
+              ListTile(
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Logout',
+                    ),
+                    Icon(
+                      Icons.logout_sharp,
+                    ),
+                  ],
+                ),
+                onTap: () {
+                  // Implement logout functionality
+                  FirebaseAuth.instance.signOut();
+                  Navigator.pop(context); // Close the drawer
+                  // Add your logout logic here
+                },
+              ),
+            ],
+          ),
         ),
         backgroundColor: Theme.of(context).colorScheme.background,
-        // appBar: AppBar(
-        //   centerTitle: true,
-        //   title: const Text(""),
-        // ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -98,34 +161,6 @@ class DashboardScreen extends StatelessWidget {
                 ),
               ),
             ),
-            // Padding(
-            //   padding: const EdgeInsets.all(8.0),
-            //   child: InkWell(
-            //     onTap: () {
-            //       Navigator.push(
-            //         context,
-            //         MaterialPageRoute(
-            //           builder: (context) => const ImageToTextScreen(),
-            //         ),
-            //       );
-            //     },
-            //     child: Container(
-            //       height: 80,
-            //       decoration: BoxDecoration(
-            //         color: Theme.of(context).colorScheme.primaryContainer,
-            //         borderRadius: BorderRadius.circular(10),
-            //       ),
-            //       alignment: Alignment.center,
-            //       child: Text(
-            //         "Image to text",
-            //         style: TextStyle(
-            //           fontWeight: FontWeight.bold,
-            //           color: Theme.of(context).colorScheme.primary,
-            //         ),
-            //       ),
-            //     ),
-            //   ),
-            // )
           ],
         ),
       ),

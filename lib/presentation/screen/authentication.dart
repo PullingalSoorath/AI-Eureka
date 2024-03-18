@@ -24,5 +24,3 @@ class Authentication extends StatelessWidget {
 }
 
 
-// user@mail.com
-// user123

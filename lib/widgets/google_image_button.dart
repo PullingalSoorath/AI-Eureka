@@ -11,19 +11,19 @@ class GoogleImageButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.white,
-          ),
-          height: 50,
-          width: 50,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.white,
+        ),
+        height: 50,
+        width: 50,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: InkWell(
+            onTap: onTap,
             child: Image.asset(
               'assets/images/google.png',
               height: 24.0,

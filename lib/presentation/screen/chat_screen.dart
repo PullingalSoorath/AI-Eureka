@@ -3,7 +3,6 @@ import 'package:eureka/widgets/loading_widget.dart';
 import 'package:eureka/widgets/message_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:eureka/util/app_const.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 
 class ChatScreen extends StatefulWidget {

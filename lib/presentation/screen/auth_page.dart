@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+
 import 'package:eureka/services/auth_service.dart';
 import 'package:eureka/widgets/sign_signup_text_btn.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +50,7 @@ class _AuthScreenState extends State<AuthScreen> {
             ),
             AccountAuthText(
               text1: "If you don't have an account? ",
-              text2: "Sign In",
+              text2: _signIn ? "Sign In" : "Sign Up",
               onTap: () {
                 setState(() {
                   _signIn = !_signIn;
@@ -61,4 +62,62 @@ class _AuthScreenState extends State<AuthScreen> {
       ),
     );
   }
+  // onClickGoogleBtn() {
+  //   _signInWithGoogle().then(
+  //     (user) async {
+  //       Navigator.pop(context);
+  //       if (user != null) {
+  //         log('\nUser: ${user.user}');
+  //         log('\nUserAdditionalUserInfo: ${user.additionalUserInfo}');
+
+  //         if ((await APIs.userExist())) {
+  //           Navigator.pushAndRemoveUntil(
+  //               context,
+  //               MaterialPageRoute(
+  //                 builder: (context) => const HomeScreen(),
+  //               ),
+  //               (route) => false);
+  //         } else {
+  //           APIs.createUser().then(
+  //             (value) {
+  //               Navigator.pushReplacement(
+  //                 context,
+  //                 MaterialPageRoute(
+  //                   builder: (context) => const HomeScreen(),
+  //                 ),
+  //               );
+  //             },
+  //           );
+  //         }
+  //       }
+  //     },
+  //   );
+  // }
+
+  // Future<UserCredential?> _signInWithGoogle() async {
+  //   try {
+  //     await InternetAddress.lookup('google.com');
+  //     // Trigger the authentication flow
+  //     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+  //     // Obtain the auth details from the request
+  //     final GoogleSignInAuthentication? googleAuth =
+  //         await googleUser?.authentication;
+
+  //     // Create a new credential
+  //     final credential = GoogleAuthProvider.credential(
+  //       accessToken: googleAuth?.accessToken,
+  //       idToken: googleAuth?.idToken,
+  //     );
+
+  //     // Once signed in, return the UserCredential
+  //     return await APIs.auth.signInWithCredential(credential);
+  //   } catch (e) {
+  //     log('\n_signInWithGoogle:$e');
+
+  //     Dialogs.showSnackbar(
+  //         context, 'Something went wrong, Check your internet connection');
+  //     return null;
+  //   }
+  // }
 }

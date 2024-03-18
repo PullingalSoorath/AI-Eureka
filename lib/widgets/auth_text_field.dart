@@ -8,10 +8,11 @@ class AuthTextField extends StatefulWidget {
     this.controller,
     required this.obscureText,
     required this.enableObscureText,
+    required this.validator,
   });
   final String hintText;
   final TextEditingController? controller;
-
+  final FormFieldValidator validator;
   late bool obscureText;
   late bool enableObscureText;
 
@@ -42,9 +43,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
                   });
                 },
                 icon: Icon(
-                  widget.obscureText
-                      ? Icons.visibility_off
-                      : Icons.visibility,
+                  widget.obscureText ? Icons.visibility_off : Icons.visibility,
                 ),
               ),
             ),

@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:eureka/presentation/screen/chat_screen.dart';
 import 'package:eureka/util/app_const.dart';
@@ -72,6 +73,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           backgroundColor: Theme.of(context).colorScheme.background,
         ),
         endDrawer: Drawer(
+          width: MediaQuery.of(context).size.width * 0.9,
           backgroundColor: Theme.of(context).colorScheme.background,
           child: ListView(
             padding: EdgeInsets.zero,
@@ -82,26 +84,64 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 ),
                 accountName: Text(
                   _userName,
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
                 ),
                 accountEmail: Text(
                   _emailId,
-                ),
-                currentAccountPicture: CircleAvatar(
-                  backgroundImage: AssetImage(
-                    FirebaseAuth.instance.currentUser!.photoURL == null
-                        ? 'assets/images/profile_bg.png'
-                        : FirebaseAuth.instance.currentUser!.photoURL!,
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.primary,
                   ),
                 ),
+                currentAccountPicture: ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: CachedNetworkImage(
+                    fit: BoxFit.cover,
+                    imageUrl: FirebaseAuth.instance.currentUser?.photoURL ?? '',
+                    placeholder: (context, url) => ClipRRect(
+                      borderRadius: BorderRadius.circular(35),
+                      child: Container(
+                        height: 180,
+                        width: 180,
+                        color: Colors.white60,
+                        child: Padding(
+                          padding: const EdgeInsets.all(70.0),
+                          child: CircularProgressIndicator(
+                            color: Colors.white,
+                            backgroundColor: Colors.blue.withOpacity(.5),
+                            strokeWidth: 2,
+                          ),
+                        ),
+                      ),
+                    ),
+                    errorWidget: (context, url, error) => ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Container(
+                        color: Colors.grey.shade400,
+                        child: const Icon(Icons.person),
+                      ),
+                    ),
+                  ),
+                ),
+                // currentAccountPictureSize: Size(100, 100),
               ),
-              // ListTile(
-              //   title: Text('Profile'),
-              //   onTap: () {
-              //     // Navigate to profile screen
-              //     Navigator.pop(context); // Close the drawer
-              //     // Add your navigation logic here
-              //   },
-              // ),
+              ListTile(
+                title: Text('License'),
+                onTap: () {
+                  showLicensePage(
+                    context: context,
+                    applicationName: 'AutoBotAI',
+                    applicationVersion: '1.0.0',
+                    applicationIcon: Image.asset(
+                      'assets/images/app_icon.png',
+                      width: 60,
+                      height: 60,
+                    ),
+                  );
+                  ;
+                },
+              ),
               ListTile(
                 title: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

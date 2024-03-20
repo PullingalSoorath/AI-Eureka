@@ -1,4 +1,3 @@
-
 import 'package:eureka/util/app_const.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +39,7 @@ class MessageWidget extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SelectableText(
+                Text(
                   isFromUser
                       ? "${FirebaseAuth.instance.currentUser?.displayName}"
                       : "$appName",

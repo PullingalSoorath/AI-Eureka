@@ -1,18 +1,5 @@
 import 'package:flutter/material.dart';
 
-// ThemeMode themeMode = ThemeMode.system;
-
-// ThemeData get themedata {
-//   switch (themeMode) {
-//     case ThemeMode.system:
-//       return lightMode;
-//     case ThemeMode.light:
-//       return lightMode;
-//     case ThemeMode.dark:
-//       return darkMode;
-//   }
-// }
-
 final lightMode = ThemeData(
   appBarTheme: const AppBarTheme(color: Colors.white),
   brightness: Brightness.light,
@@ -20,7 +7,7 @@ final lightMode = ThemeData(
     background: Color.fromARGB(255, 218, 234, 247),
     primary: Colors.black,
     secondary: Colors.white,
-    primaryContainer: Colors.blue,
+    primaryContainer: Color.fromARGB(255, 96, 178, 245),
     onBackground: Color.fromARGB(255, 252, 252, 252),
   ),
 );

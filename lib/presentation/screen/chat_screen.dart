@@ -103,42 +103,45 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
           ),
           leading: IconButton(
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (context) => AlertDialog(
-                    title: const Text('Exit Chat'),
-                    content: const Text(
-                      'Are you sure you want to exit the chat?\nIt will lose your last chat',
-                    ),
-                    actions: [
-                      TextButton(
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStatePropertyAll(
-                            Theme.of(context).colorScheme.primaryContainer,
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.pop(context);
-                          Navigator.pop(context);
-                        },
-                        child: const Text('Yes'),
-                      ),
-                      TextButton(
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStatePropertyAll(
-                            Theme.of(context).colorScheme.primaryContainer,
-                          ),
-                        ),
-                        onPressed: () =>
-                            Navigator.pop(context, false), // Cancel pop
-                        child: const Text('No'),
-                      ),
-                    ],
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: const Text('Exit Chat'),
+                  content: const Text(
+                    'Are you sure you want to exit the chat?\nIt will lose your last chat',
                   ),
-                );
-              },
-              icon: const Icon(Icons.arrow_back_ios_new)),
+                  actions: [
+                    TextButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStatePropertyAll(
+                          Theme.of(context).colorScheme.primaryContainer,
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                        Navigator.pop(context);
+                      },
+                      child: const Text('Yes'),
+                    ),
+                    TextButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStatePropertyAll(
+                          Theme.of(context).colorScheme.primaryContainer,
+                        ),
+                      ),
+                      onPressed: () =>
+                          Navigator.pop(context, false), // Cancel pop
+                      child: const Text('No'),
+                    ),
+                  ],
+                ),
+              );
+            },
+            icon: const Icon(
+              Icons.arrow_back_ios_new,
+            ),
+          ),
         ),
         body: Column(
           children: [
@@ -172,7 +175,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     final message = _getMesageFromContent(content);
                     return MessageWidget(
                       message: message,
-                      isFormUser: content.role == "user",
+                      isFromUser: content.role == "user",
                     );
                   }),
                 ),
@@ -319,3 +322,6 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 }
+
+
+

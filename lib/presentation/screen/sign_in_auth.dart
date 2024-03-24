@@ -6,7 +6,6 @@ import 'package:eureka/widgets/auth_text_field.dart';
 import 'package:eureka/widgets/loading_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 import '../../util/app_const.dart';
 
 class SignInAuth extends StatefulWidget {
@@ -57,7 +56,7 @@ class _SignInAuthState extends State<SignInAuth> {
     );
   }
 
-  // Email Validatiom
+  // Email Validation
   String? validateEmail(dynamic value) {
     if (value == null || value.isEmpty) {
       return 'Please enter an email address';

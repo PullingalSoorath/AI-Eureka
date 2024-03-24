@@ -15,12 +15,10 @@ class Authentication extends StatelessWidget {
           if (snapshot.hasData) {
             return const DashboardScreen();
           } else {
-            return const AuthScreen();
+            return AuthScreen();
           }
         },
       ),
     );
   }
 }
-
-

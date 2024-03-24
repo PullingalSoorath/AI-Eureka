@@ -158,9 +158,16 @@ class _ChatScreenState extends State<ChatScreen> {
                   )
                 : Visibility(
                     visible: _isLoading,
-                    child: Text(
-                      'Fetching data...',
-                      style: Theme.of(context).textTheme.titleLarge,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Fetching data',
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
+                        const SizedBox(width: 10),
+                        ThreeDotLoading(),
+                      ],
                     ),
                   ),
             Expanded(
@@ -322,6 +329,3 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 }
-
-
-

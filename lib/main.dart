@@ -1,8 +1,10 @@
+import 'package:eureka/application/signIn_signUp/sign_in_sign_up_bloc.dart';
 import 'package:eureka/presentation/screen/authentication.dart';
 import 'package:eureka/util/theme_data.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,12 +19,24 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      themeMode: ThemeMode.system,
-      theme: lightMode,
-      darkTheme: darkMode,
-      debugShowCheckedModeBanner: false,
-      home: const Authentication(),
+    return BlocProvider(
+      create: (context) {
+        return SignInSignUpBloc();
+      },
+
+      // MultiBlocProvider(
+      // providers: [
+      //   BlocProvider<SignInSignUpBloc>(
+      //     create: (context) => SignInSignUpBloc(),
+      //   )
+      // ],
+      child: MaterialApp(
+        themeMode: ThemeMode.system,
+        theme: lightMode,
+        darkTheme: darkMode,
+        debugShowCheckedModeBanner: false,
+        home: const Authentication(),
+      ),
     );
   }
 }

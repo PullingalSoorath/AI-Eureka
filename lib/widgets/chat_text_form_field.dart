@@ -14,12 +14,17 @@ class ChatTextFormField extends StatelessWidget {
     this.controller,
     this.isReadOnly = false,
     required this.onFieldSubmitted,
-    this.onchanged, this.errorText,
+    this.onchanged,
+    this.errorText,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      style: TextStyle(
+        color: Theme.of(context).colorScheme.primary,
+        fontFamily: 'InputSerifNarrow',
+      ),
       onChanged: onchanged,
       autofocus: true,
       autocorrect: false,
@@ -27,8 +32,11 @@ class ChatTextFormField extends StatelessWidget {
       controller: controller,
       readOnly: isReadOnly,
       onFieldSubmitted: onFieldSubmitted,
-      decoration: const InputDecoration(
+      decoration: InputDecoration(
         hintText: "Enter your prompt here",
+        hintStyle: TextStyle(
+          fontFamily: 'InputSerifNarrow',
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(10),

@@ -50,28 +50,29 @@ class MessageWidget extends StatelessWidget {
                 ),
                 Divider(
                   color: isFromUser
-                      ? Theme.of(context).colorScheme.background
+                      ? Theme.of(context).colorScheme.surface
                       : Theme.of(context).colorScheme.primary,
                 ),
                 MarkdownBody(
                   data: message,
                   selectable: true,
                   styleSheet: MarkdownStyleSheet(
-                      code: TextStyle(
-                          // color: codeColor,
-                          backgroundColor: Colors.transparent),
-                      codeblockDecoration: BoxDecoration(
-                        color: Theme.of(context).brightness == Brightness.dark
-                            ? Colors.grey.shade900
-                            : Color.fromARGB(255, 203, 203, 203),
-                      )
-                      // a: TextStyle(
-                      //   color: Colors.amber,
-                      // ),
-                      // p: TextStyle(
-                      //   color: Colors.white,
-                      // ),
-                      ),
+                    codeblockDecoration: BoxDecoration(
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.grey.shade900
+                          : Color.fromARGB(255, 203, 203, 203),
+                    ),
+                    code: TextStyle(
+                      color: Colors.white,
+                      backgroundColor: Colors.transparent,
+                    ),
+                    a: TextStyle(
+                      color: Colors.amber,
+                    ),
+                    p: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
               ],
             ),

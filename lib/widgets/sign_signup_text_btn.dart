@@ -18,7 +18,12 @@ class AccountAuthText extends StatelessWidget {
       child: Text.rich(
         TextSpan(
           children: [
-            TextSpan(text: text1),
+            TextSpan(
+              text: text1,
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.primary,
+              ),
+            ),
             TextSpan(
               text: text2,
               style: const TextStyle(

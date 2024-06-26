@@ -46,7 +46,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             actions: [
               TextButton(
                 style: ButtonStyle(
-                  backgroundColor: MaterialStatePropertyAll(
+                  backgroundColor: WidgetStatePropertyAll(
                     Theme.of(context).colorScheme.primaryContainer,
                   ),
                 ),
@@ -56,7 +56,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               ),
               TextButton(
                 style: ButtonStyle(
-                  backgroundColor: MaterialStatePropertyAll(
+                  backgroundColor: WidgetStatePropertyAll(
                     Theme.of(context).colorScheme.primaryContainer,
                   ),
                 ),
@@ -70,17 +70,18 @@ class _DashboardScreenState extends State<DashboardScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.background,
+          foregroundColor: Theme.of(context).colorScheme.primary,
+          backgroundColor: Theme.of(context).colorScheme.surface,
         ),
         endDrawer: Drawer(
           width: MediaQuery.of(context).size.width * 0.9,
-          backgroundColor: Theme.of(context).colorScheme.background,
+          backgroundColor: Theme.of(context).colorScheme.surface,
           child: ListView(
             padding: EdgeInsets.zero,
             children: <Widget>[
               UserAccountsDrawerHeader(
                 decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.background,
+                  color: Theme.of(context).colorScheme.surface,
                 ),
                 accountName: Text(
                   _userName,
@@ -118,7 +119,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     errorWidget: (context, url, error) => ClipRRect(
                       borderRadius: BorderRadius.circular(10),
                       child: Container(
-                        color: Colors.grey.shade400,
+                        color: const Color.fromARGB(255, 81, 81, 81),
                         child: const Icon(Icons.person),
                       ),
                     ),
@@ -127,7 +128,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 // currentAccountPictureSize: Size(100, 100),
               ),
               ListTile(
-                title: Text('License'),
+                title: Text(
+                  'License',
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                ),
                 onTap: () {
                   showLicensePage(
                     context: context,
@@ -148,9 +154,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   children: [
                     Text(
                       'Logout',
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
                     ),
                     Icon(
                       Icons.logout_sharp,
+                      color: Theme.of(context).colorScheme.primary,
                     ),
                   ],
                 ),
@@ -164,13 +174,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ],
           ),
         ),
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               "Select your choice",
-              style: Theme.of(context).textTheme.titleLarge,
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.primary,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -206,5 +220,4 @@ class _DashboardScreenState extends State<DashboardScreen> {
       ),
     );
   }
- 
 }

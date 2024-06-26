@@ -18,8 +18,8 @@ class AuthButton extends StatelessWidget {
         width: MediaQuery.of(context).size.width * 0.9,
         child: ElevatedButton(
           style: ButtonStyle(
-            backgroundColor: const MaterialStatePropertyAll(Colors.blue),
-            shape: MaterialStatePropertyAll(
+            backgroundColor: const WidgetStatePropertyAll(Colors.blue),
+            shape: WidgetStatePropertyAll(
               RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),

@@ -15,15 +15,17 @@ class AuthScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => SignInSignUpBloc(),
       child: Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.surface,
         appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.background,
+          backgroundColor: Theme.of(context).colorScheme.surface,
           centerTitle: true,
           title: BlocBuilder<SignInSignUpBloc, SignInSignUpState>(
             builder: (context, state) {
               return Text(
                 state.signIn ? "Sign Up" : "Sign In",
-                style: const TextStyle(
+                style: TextStyle(
                   fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
               );
             },
@@ -39,11 +41,16 @@ class AuthScreen extends StatelessWidget {
                     height: MediaQuery.of(context).size.height * 0.2,
                   ),
                   state.signIn ? const SignUpAuth() : const SignInAuth(),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.only(
                       top: 10,
                     ),
-                    child: Text('Or continue with'),
+                    child: Text(
+                      'Or continue with',
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                    ),
                   ),
                   GoogleImageButton(
                     onTap: () => AuthServices().signWithGoogle(context),
@@ -54,8 +61,9 @@ class AuthScreen extends StatelessWidget {
                         : "If you don't have an account? ",
                     text2: state.signIn ? "Sign In" : "Sign Up",
                     onTap: () {
-                      BlocProvider.of<SignInSignUpBloc>(context)
-                          .add(ToggleSignInEvent());
+                      BlocProvider.of<SignInSignUpBloc>(context).add(
+                        ToggleSignInEvent(),
+                      );
                     },
                   ),
                 ],

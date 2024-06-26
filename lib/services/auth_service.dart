@@ -30,7 +30,7 @@ class AuthServices {
             "Check your internet connection and try again!",
           ),
           backgroundColor: Colors.redAccent,
-          duration: const Duration(seconds: 2), // Adjust the duration as needed
+          duration: const Duration(seconds: 2),
         ),
       );
     }

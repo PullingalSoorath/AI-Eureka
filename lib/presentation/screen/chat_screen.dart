@@ -63,29 +63,51 @@ class _ChatScreenState extends State<ChatScreen> {
         final shouldPop = await showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: const Text('Exit Chat'),
-            content: const Text(
+            title: Text(
+              'Exit Chat',
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.primary,
+                fontFamily: 'Ki_Extra_Bold',
+              ),
+            ),
+            content: Text(
               'Are you sure you want to exit the chat?\nIt will lose your last chat',
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.primary,
+                fontFamily: 'InputSerifNarrow',
+              ),
             ),
             actions: [
               TextButton(
                 style: ButtonStyle(
-                  backgroundColor: MaterialStatePropertyAll(
+                  backgroundColor: WidgetStatePropertyAll(
                     Theme.of(context).colorScheme.primaryContainer,
                   ),
                 ),
                 onPressed: () =>
                     Navigator.pop(context, true), // close the application
-                child: const Text('Yes'),
+                child: Text(
+                  'Yes',
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.primary,
+                    fontFamily: 'InputSerifNarrow',
+                  ),
+                ),
               ),
               TextButton(
                 style: ButtonStyle(
-                  backgroundColor: MaterialStatePropertyAll(
+                  backgroundColor: WidgetStatePropertyAll(
                     Theme.of(context).colorScheme.primaryContainer,
                   ),
                 ),
                 onPressed: () => Navigator.pop(context, false), // Cancel pop
-                child: const Text('No'),
+                child: Text(
+                  'No',
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.primary,
+                    fontFamily: 'InputSerifNarrow',
+                  ),
+                ),
               ),
             ],
           ),
@@ -93,12 +115,17 @@ class _ChatScreenState extends State<ChatScreen> {
         return shouldPop ?? false; // Default to not popping
       },
       child: Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.surface,
         appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.background,
+          forceMaterialTransparency: true,
+          backgroundColor: Theme.of(context).colorScheme.surface,
+          foregroundColor: Theme.of(context).colorScheme.primary,
           centerTitle: true,
-          title: const Text(
+          title: Text(
             appName,
             style: TextStyle(
+              color: Theme.of(context).colorScheme.primary,
+              fontFamily: 'Ki_Extra_Bold',
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -107,14 +134,25 @@ class _ChatScreenState extends State<ChatScreen> {
               showDialog(
                 context: context,
                 builder: (context) => AlertDialog(
-                  title: const Text('Exit Chat'),
-                  content: const Text(
+                  backgroundColor: Theme.of(context).colorScheme.surface,
+                  title: Text(
+                    'Exit Chat',
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.primary,
+                      fontFamily: 'Ki_Extra_Bold',
+                    ),
+                  ),
+                  content: Text(
                     'Are you sure you want to exit the chat?\nIt will lose your last chat',
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.primary,
+                      fontFamily: 'InputSerifNarrow',
+                    ),
                   ),
                   actions: [
                     TextButton(
                       style: ButtonStyle(
-                        backgroundColor: MaterialStatePropertyAll(
+                        backgroundColor: WidgetStatePropertyAll(
                           Theme.of(context).colorScheme.primaryContainer,
                         ),
                       ),
@@ -122,17 +160,28 @@ class _ChatScreenState extends State<ChatScreen> {
                         Navigator.pop(context);
                         Navigator.pop(context);
                       },
-                      child: const Text('Yes'),
+                      child: Text(
+                        'Yes',
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontFamily: 'InputSerifNarrow',
+                        ),
+                      ),
                     ),
                     TextButton(
                       style: ButtonStyle(
-                        backgroundColor: MaterialStatePropertyAll(
+                        backgroundColor: WidgetStatePropertyAll(
                           Theme.of(context).colorScheme.primaryContainer,
                         ),
                       ),
                       onPressed: () =>
                           Navigator.pop(context, false), // Cancel pop
-                      child: const Text('No'),
+                      child: Text(
+                        'No',
+                        style: TextStyle(
+                            color: Theme.of(context).colorScheme.primary,
+                            fontFamily: 'InputSerifNarrow'),
+                      ),
                     ),
                   ],
                 ),
@@ -152,7 +201,12 @@ class _ChatScreenState extends State<ChatScreen> {
                     child: Center(
                       child: Text(
                         'How can I help you now?',
-                        style: Theme.of(context).textTheme.titleLarge,
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontSize: 20,
+                          // fontWeight: FontWeight.bold,
+                          fontFamily: 'Ki_Extra_Bold',
+                        ),
                       ),
                     ),
                   )

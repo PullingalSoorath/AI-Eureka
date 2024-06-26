@@ -74,13 +74,14 @@ class _SignUpAuthState extends State<SignUpAuth> {
           const SizedBox(
             width: double.infinity,
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.all(8.0),
             child: Text(
               'Welcome to $appName',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
+                color: Theme.of(context).colorScheme.primary,
               ),
               textAlign: TextAlign.center,
             ),

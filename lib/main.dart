@@ -1,5 +1,6 @@
 import 'package:eureka/application/signIn_signUp/sign_in_sign_up_bloc.dart';
-import 'package:eureka/presentation/screen/authentication.dart';
+import 'package:eureka/presentation/screen/dashboard_screen.dart';
+import 'package:eureka/temp.dart';
 import 'package:eureka/util/theme_data.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -35,7 +36,9 @@ class MyApp extends StatelessWidget {
         theme: lightMode,
         darkTheme: darkMode,
         debugShowCheckedModeBanner: false,
-        home: const Authentication(),
+        // home: const Authentication(),
+        // home: const DashboardScreen(),
+        home: BlurredCircles(),
       ),
     );
   }

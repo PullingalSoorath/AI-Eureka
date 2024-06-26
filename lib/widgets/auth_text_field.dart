@@ -47,7 +47,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
                 ),
               ),
             ),
-            fillColor: Theme.of(context).colorScheme.onBackground,
+            fillColor: Theme.of(context).colorScheme.onSurface,
             filled: true,
             hintText: widget.hintText,
             border: const OutlineInputBorder(

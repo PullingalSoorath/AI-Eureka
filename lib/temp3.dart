@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'dart:math' as math; // Import for random number generation
+// import 'dart:math' as math; 
 
 class MovingCirclesScreen2 extends StatefulWidget {
   @override
@@ -32,7 +32,6 @@ class _MovingCirclesScreen2State extends State<MovingCirclesScreen2> {
         for (int i = 0; i < circleYs.length; i++) {
           // ... your circle movement logic ...
         }
-
         // **Missing line:** This line tells Flutter to rebuild the UI with the updated state
         // after modifications within setState
         // Rebuild the widget tree based on the new state
@@ -45,16 +44,13 @@ class _MovingCirclesScreen2State extends State<MovingCirclesScreen2> {
     timer.cancel();
     super.dispose();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(
         children: [
-          for (int i = 0;
-              i < circleYs.length;
-              i++) // Efficiently create circles
+          for (int i = 0; i < circleYs.length; i++)
             AnimatedPositioned(
               duration: Duration(milliseconds: 100),
               left: i * 100.0, // Adjust horizontal spacing
@@ -70,7 +66,6 @@ class _MovingCirclesScreen2State extends State<MovingCirclesScreen2> {
     );
   }
 }
-
 class Circle extends StatelessWidget {
   final Color centerColor;
   final Color edgeColor;
@@ -97,3 +92,4 @@ class Circle extends StatelessWidget {
     );
   }
 }
+

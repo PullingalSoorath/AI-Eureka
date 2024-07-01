@@ -9,6 +9,7 @@ final lightMode = ThemeData(
     secondary: Colors.white,
     primaryContainer: Color.fromARGB(255, 96, 178, 245),
     onSurface: Color.fromARGB(255, 252, 252, 252),
+    secondaryContainer: Color.fromARGB(255, 208, 242, 254),
   ),
 );
 
@@ -21,5 +22,6 @@ final darkMode = ThemeData(
     secondary: Colors.black,
     primaryContainer: Color.fromARGB(255, 42, 79, 110),
     onSurface: Color.fromARGB(255, 24, 80, 125),
+    secondaryContainer: Color.fromARGB(255, 1, 37, 50),
   ),
 );

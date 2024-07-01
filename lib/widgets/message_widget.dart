@@ -70,7 +70,7 @@ class MessageWidget extends StatelessWidget {
                       color: Colors.amber,
                     ),
                     p: TextStyle(
-                      color: Colors.white,
+                      color: Theme.of(context).colorScheme.primary,
                     ),
                   ),
                 ),

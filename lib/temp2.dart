@@ -60,7 +60,7 @@ class _MovingCirclesScreenState extends State<MovingCirclesScreen> {
             left: 50.0,
             top: circle2Y,
             child: Circle(
-              centerColor: Colors.purple,
+              centerColor: Colors.red,
               edgeColor: Colors.transparent,
               radius: 350.0,
             ),
@@ -70,7 +70,7 @@ class _MovingCirclesScreenState extends State<MovingCirclesScreen> {
             left: 250.0,
             top: circle3Y,
             child: Circle(
-              centerColor: Colors.purple,
+              centerColor: Colors.green,
               edgeColor: Colors.transparent,
               radius: 350.0,
             ),

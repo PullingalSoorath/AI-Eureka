@@ -24,6 +24,8 @@ class AuthServices {
       //finally let's SignIn
       return await FirebaseAuth.instance.signInWithCredential(credential);
     } catch (e) {
+      Navigator.pop(context);
+      print(e);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(

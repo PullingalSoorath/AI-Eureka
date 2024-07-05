@@ -41,7 +41,8 @@ class MessageWidget extends StatelessWidget {
               children: [
                 Text(
                   isFromUser
-                      ? "${FirebaseAuth.instance.currentUser?.displayName}"
+                      // ? "${FirebaseAuth.instance.currentUser?.displayName}"
+                      ? "You"
                       : "$appName",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,

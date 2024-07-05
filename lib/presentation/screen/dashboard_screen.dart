@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:animated_background/animated_background.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:eureka/presentation/screen/chat_screen.dart';
@@ -13,7 +14,8 @@ class DashboardScreen extends StatefulWidget {
   State<DashboardScreen> createState() => _DashboardScreenState();
 }
 
-class _DashboardScreenState extends State<DashboardScreen> {
+class _DashboardScreenState extends State<DashboardScreen>
+    with TickerProviderStateMixin {
   String _userName = '';
   String _emailId = '';
 
@@ -71,7 +73,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
       child: Scaffold(
         appBar: AppBar(
           foregroundColor: Theme.of(context).colorScheme.primary,
-          backgroundColor: Theme.of(context).colorScheme.surface,
+          // backgroundColor: Theme.of(context).colorScheme.surface,
+          forceMaterialTransparency: true,
         ),
         endDrawer: Drawer(
           width: MediaQuery.of(context).size.width * 0.9,
@@ -140,7 +143,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     applicationName: 'AutoBotAI',
                     applicationVersion: '1.0.0',
                     applicationIcon: Image.asset(
-                      'assets/images/app_icon.png',
+                      'assets/images/app_icon.jpeg',
                       width: 60,
                       height: 60,
                     ),
@@ -174,48 +177,67 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ],
           ),
         ),
-        backgroundColor: Theme.of(context).colorScheme.surface,
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "Select your choice",
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.primary,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+        backgroundColor: Theme.of(context).colorScheme.secondary,
+        body: AnimatedBackground(
+          behaviour: RandomParticleBehaviour(
+            options: ParticleOptions(
+              spawnMaxSpeed: 50.0,
+              spawnMinSpeed: 10.0,
+              spawnMaxRadius: 10.0,
+              spawnMinRadius: 10.0,
+              particleCount: 40,
+              spawnOpacity: 0.1,
+              minOpacity: 0.5,
+              maxOpacity: 0.5,
+              baseColor: Colors.blue,
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ChatScreen(),
+          ),
+          vsync: this,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Select your choice",
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.primary,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ChatScreen(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    height: 80,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context)
+                          .colorScheme
+                          .primaryContainer
+                          .withOpacity(0.8),
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                  );
-                },
-                child: Container(
-                  height: 80,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.primaryContainer,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  alignment: Alignment.center,
-                  child: const Text(
-                    "Chat with $appName",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      fontSize: 17,
+                    alignment: Alignment.center,
+                    child: const Text(
+                      "Chat with $appName",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        fontSize: 17,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -116,12 +116,12 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
         return shouldPop ?? false; // Default to not popping
       },
       child: Scaffold(
-        // backgroundColor: Theme.of(context).colorScheme.surface,
+        backgroundColor: Theme.of(context).colorScheme.secondary,
         appBar: AppBar(
-          // forceMaterialTransparency: true,
           // backgroundColor: Theme.of(context).colorScheme.surface,
           foregroundColor: Theme.of(context).colorScheme.primary,
-
+          elevation: 0,
+          forceMaterialTransparency: true,
           centerTitle: true,
           title: Text(
             appName,
@@ -135,7 +135,6 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
               showDialog(
                 context: context,
                 builder: (context) => AlertDialog(
-                  backgroundColor: Theme.of(context).colorScheme.surface,
                   title: Text(
                     'Exit Chat',
                     style: TextStyle(
@@ -158,9 +157,10 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.pop(context);
-                        Navigator.pop(context);
+                        Navigator.pop(context, true);
+                        Navigator.pop(context, true);
                       },
+                      // close the application
                       child: Text(
                         'Yes',
                         style: TextStyle(
@@ -180,8 +180,9 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                       child: Text(
                         'No',
                         style: TextStyle(
-                            color: Theme.of(context).colorScheme.primary,
-                            fontFamily: 'InputSerifNarrow'),
+                          color: Theme.of(context).colorScheme.primary,
+                          fontFamily: 'InputSerifNarrow',
+                        ),
                       ),
                     ),
                   ],
@@ -233,7 +234,11 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                         children: [
                           Text(
                             'Fetching data',
-                            style: Theme.of(context).textTheme.titleLarge,
+                            style: TextStyle(
+                              fontFamily: 'Ki_Extra_Bold',
+                              fontSize: 20,
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
                           ),
                           const SizedBox(width: 10),
                           ThreeDotLoading(),
